@@ -1,0 +1,53 @@
+{% extends 'admin_dashboard.html' %}
+{% block content %}
+<div class="flex flex-1 items-center justify-center w-full h-full min-h-0">
+    <div class="max-w-7xl w-full bg-white bg-opacity-95 rounded-2xl shadow-2xl p-16 flex flex-col items-center h-full justify-center">
+        <div class="flex items-center mb-8">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center shadow-lg mr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 17l-4 4m0 0l-4-4m4 4V3" /></svg>
+            </div>
+            <h2 class="text-3xl font-extrabold text-blue-700">Pending Signup Requests</h2>
+        </div>
+        {% if message %}
+            <div class="mb-4 text-center text-green-600 font-semibold text-lg">{{ message }}</div>
+        {% endif %}
+        <div class="overflow-x-auto w-full">
+            <table class="min-w-full table-auto border rounded-xl shadow-lg overflow-hidden">
+                <thead>
+                    <tr class="bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800">
+                        <th class="px-6 py-4 border-b font-semibold text-lg text-left">Roll No</th>
+                        <th class="px-6 py-4 border-b font-semibold text-lg text-left">Name</th>
+                        <th class="px-6 py-4 border-b font-semibold text-lg text-left">Class</th>
+                        <th class="px-6 py-4 border-b font-semibold text-lg text-left">Branch</th>
+                        <th class="px-6 py-4 border-b font-semibold text-lg text-left">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for req in requests %}
+                    <tr class="hover:bg-blue-50 transition">
+                        <td class="px-6 py-4 border-b text-gray-700 text-base text-left">{{ req.rollno }}</td>
+                        <td class="px-6 py-4 border-b text-gray-700 text-base text-left">{{ req.name }}</td>
+                        <td class="px-6 py-4 border-b text-gray-700 text-base text-left">{{ req.class }}</td>
+                        <td class="px-6 py-4 border-b text-gray-700 text-base text-left">{{ req.branch }}</td>
+                        <td class="px-6 py-4 border-b text-left">
+                            <form method="POST" style="display:inline">
+                                <input type="hidden" name="rollno" value="{{ req.rollno }}" />
+                                <button name="action" value="approve" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 font-semibold">Approve</button>
+                            </form>
+                            <form method="POST" style="display:inline">
+                                <input type="hidden" name="rollno" value="{{ req.rollno }}" />
+                                <button name="action" value="reject" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 font-semibold ml-2">Reject</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center py-8 text-gray-500 text-lg">No pending requests.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %} 

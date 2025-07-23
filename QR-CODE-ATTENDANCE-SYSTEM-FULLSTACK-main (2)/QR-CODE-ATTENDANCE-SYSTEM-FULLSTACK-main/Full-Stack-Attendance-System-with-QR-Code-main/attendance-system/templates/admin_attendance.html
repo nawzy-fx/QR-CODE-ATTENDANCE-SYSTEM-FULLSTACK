@@ -1,0 +1,52 @@
+{% extends 'admin_dashboard.html' %}
+{% block content %}
+<div class="flex flex-1 items-center justify-center w-full h-full min-h-0">
+    <div class="max-w-7xl w-full bg-white bg-opacity-95 rounded-2xl shadow-2xl p-16 flex flex-col items-center h-full justify-center">
+        <div class="flex items-center mb-8">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center shadow-lg mr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2a2 2 0 012-2h2a2 2 0 012 2v2m-6 4h6a2 2 0 002-2v-6a2 2 0 00-2-2h-2a2 2 0 00-2 2v6a2 2 0 002 2z" /></svg>
+            </div>
+            <h2 class="text-3xl font-extrabold text-blue-700">Attendance Table</h2>
+        </div>
+        <form method="GET" class="mb-6 flex flex-wrap gap-4 items-end w-full justify-center">
+            <div>
+                <label class="block font-semibold mb-1">Filter by Roll No</label>
+                <input type="text" name="rollno" value="{{ filter_rollno }}" class="px-3 py-2 border rounded" placeholder="Enter Roll No" />
+            </div>
+            <div>
+                <label class="block font-semibold mb-1">Filter by Date</label>
+                <input type="date" name="date" value="{{ filter_date }}" class="px-3 py-2 border rounded" title="Filter by Date" />
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Filter</button>
+        </form>
+        <div class="overflow-x-auto w-full">
+            <table class="min-w-full table-auto border rounded-xl shadow-lg overflow-hidden">
+                <thead>
+                    <tr class="bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800">
+                        <th class="px-6 py-4 border-b font-semibold text-lg text-left">Roll No</th>
+                        <th class="px-6 py-4 border-b font-semibold text-lg text-left">Name</th>
+                        <th class="px-6 py-4 border-b font-semibold text-lg text-left">Total Sessions</th>
+                        <th class="px-6 py-4 border-b font-semibold text-lg text-left">Sessions Attended</th>
+                        <th class="px-6 py-4 border-b font-semibold text-lg text-left">Attendance %</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in attendance_table %}
+                    <tr class="hover:bg-blue-50 transition">
+                        <td class="px-6 py-4 border-b text-gray-700 text-base text-left">{{ row.rollno }}</td>
+                        <td class="px-6 py-4 border-b text-gray-700 text-base text-left">{{ row.name }}</td>
+                        <td class="px-6 py-4 border-b text-gray-700 text-base text-left">{{ row.total_sessions }}</td>
+                        <td class="px-6 py-4 border-b text-gray-700 text-base text-left">{{ row.sessions_attended }}</td>
+                        <td class="px-6 py-4 border-b text-gray-700 text-base text-left">{{ row.attendance_percent }}%</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center py-8 text-gray-500 text-lg">No records found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,20 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+<div class="flex flex-1 items-center justify-center w-full h-full min-h-0">
+    <div class="max-w-7xl w-full bg-white bg-opacity-95 rounded-2xl shadow-2xl p-16 flex flex-col items-center h-full justify-center">
+        <div class="mb-6">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h4v4H3V3zm0 8h4v4H3v-4zm0 8h4v4H3v-4zm8-16h4v4h-4V3zm0 8h4v4h-4v-4zm0 8h4v4h-4v-4zm8-16h4v4h-4V3zm0 8h4v4h-4v-4zm0 8h4v4h-4v-4z" /></svg>
+            </div>
+        </div>
+        <h2 class="text-3xl font-extrabold text-blue-700 mb-2">Your QR Code</h2>
+        <p class="text-gray-500 mb-8 text-center">Scan this QR code to mark your attendance. Keep it safe and do not share it with others.</p>
+        {% if qr_base64 %}
+            <img id="qr-img" src="data:image/png;base64,{{ qr_base64 }}" alt="QR Code" class="mx-auto mb-6 w-56 h-56 rounded-xl border-4 border-blue-200 shadow-lg bg-white" />
+            <a id="download-btn" href="data:image/png;base64,{{ qr_base64 }}" download="qr_{{ student.rollno }}.png" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold shadow hover:bg-blue-700 transition text-lg">Download as PNG</a>
+        {% else %}
+            <div class="text-gray-600">QR code not available.</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %} 

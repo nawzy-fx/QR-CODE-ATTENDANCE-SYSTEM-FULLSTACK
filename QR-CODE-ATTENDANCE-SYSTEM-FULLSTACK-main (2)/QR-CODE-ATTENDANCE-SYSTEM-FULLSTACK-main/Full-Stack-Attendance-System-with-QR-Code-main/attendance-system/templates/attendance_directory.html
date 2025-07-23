@@ -1,0 +1,37 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+<div class="flex flex-1 items-center justify-center w-full h-full min-h-0">
+    <div class="max-w-7xl w-full bg-white bg-opacity-95 rounded-2xl shadow-2xl p-16 flex flex-col items-center h-full justify-center">
+        <div class="flex items-center mb-8">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-300 to-blue-500 flex items-center justify-center shadow-lg mr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2a2 2 0 012-2h2a2 2 0 012 2v2m-6 4h6a2 2 0 002-2v-6a2 2 0 00-2-2h-2a2 2 0 00-2 2v6a2 2 0 002 2z" /></svg>
+            </div>
+            <h2 class="text-3xl font-extrabold text-blue-700">Attendance Directory</h2>
+        </div>
+        <div class="overflow-x-auto w-full">
+            <table class="min-w-full table-auto border rounded-xl shadow-lg overflow-hidden">
+                <thead>
+                    <tr class="bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800">
+                        <th class="px-6 py-4 border-b font-semibold text-lg text-left">Date</th>
+                        <th class="px-6 py-4 border-b font-semibold text-lg text-left">Slot</th>
+                        <th class="px-6 py-4 border-b font-semibold text-lg text-left">Attendance Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in attendance_records %}
+                    <tr class="hover:bg-blue-50 transition">
+                        <td class="px-6 py-4 border-b text-gray-700 text-base text-left">{{ record.date }}</td>
+                        <td class="px-6 py-4 border-b text-gray-700 text-base text-left">{{ record.slot }}</td>
+                        <td class="px-6 py-4 border-b text-base font-semibold text-left {% if record.status == 'Marked' %}text-green-600{% else %}text-red-500{% endif %}">{{ record.status }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="3" class="text-center py-8 text-gray-500 text-lg">No attendance records found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %} 

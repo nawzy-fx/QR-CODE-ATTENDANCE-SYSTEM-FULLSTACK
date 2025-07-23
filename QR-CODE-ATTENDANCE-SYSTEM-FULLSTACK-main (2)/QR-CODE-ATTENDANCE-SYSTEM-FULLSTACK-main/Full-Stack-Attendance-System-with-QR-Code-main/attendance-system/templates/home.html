@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack Attendance System with QR Code</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-blue-200 min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <div class="container mx-auto flex justify-between items-center py-4 px-8">
+            <h1 class="text-2xl md:text-3xl font-extrabold text-blue-700 tracking-tight">Full Stack Attendance System</h1>
+            <div>
+                <a href="/signup" class="bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold shadow hover:bg-blue-700 transition">Signup</a>
+                <a href="/login" class="ml-3 bg-white border border-blue-600 text-blue-600 px-5 py-2 rounded-lg font-semibold shadow hover:bg-blue-50 transition">Login</a>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <main class="flex-1 flex flex-col justify-center items-center px-4">
+        <div class="max-w-3xl w-full text-center py-16">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+                <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="QR Attendance" class="w-48 h-48 mx-auto md:mx-0 drop-shadow-lg" />
+                <div class="text-left">
+                    <h2 class="text-4xl font-bold text-blue-800 mb-4 leading-tight">Modern QR Code Attendance Solution</h2>
+                    <p class="text-lg text-gray-700 mb-6">This web application streamlines attendance for students using secure QR code technology. Students can sign up, download their unique QR, and mark attendance in real-time. Admins can manage requests and monitor attendance statistics with ease.</p>
+                    <ul class="text-gray-600 mb-6 list-disc pl-5">
+                        <li>Fast, contactless attendance marking</li>
+                        <li>Real-time statistics and reporting</li>
+                        <li>Secure student authentication</li>
+                        <li>Admin approval for new signups</li>
+                        <li>Fully cloud-based with MongoDB Atlas</li>
+                    </ul>
+                    <div class="flex gap-4">
+                        <a href="/signup" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold shadow hover:bg-blue-700 transition text-lg">Get Started</a>
+                        <a href="/login" class="bg-white border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold shadow hover:bg-blue-50 transition text-lg">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-white shadow-inner py-4 mt-auto">
+        <div class="container mx-auto text-center text-gray-500 text-sm">
+            &copy; {{ year }} Full Stack Attendance System. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html> 

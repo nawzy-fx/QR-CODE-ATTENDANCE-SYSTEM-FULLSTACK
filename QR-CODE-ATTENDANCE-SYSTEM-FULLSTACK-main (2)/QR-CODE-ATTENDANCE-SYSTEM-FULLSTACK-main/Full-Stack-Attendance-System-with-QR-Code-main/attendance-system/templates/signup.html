@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Attendance System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-center">Student Signup</h2>
+        {% if message %}
+        <div class="mb-4 text-center text-green-600">{{ message }}</div>
+        {% endif %}
+        <form method="POST">
+            <div class="mb-4">
+                <label class="block mb-1 font-semibold">Roll No</label>
+                <input type="text" name="rollno" required class="w-full px-3 py-2 border rounded" title="Roll No" placeholder="Enter your Roll No" />
+            </div>
+            <div class="mb-4">
+                <label class="block mb-1 font-semibold">Name</label>
+                <input type="text" name="name" required class="w-full px-3 py-2 border rounded" title="Name" placeholder="Enter your Name" />
+            </div>
+            <div class="mb-4">
+                <label class="block mb-1 font-semibold">Class</label>
+                <input type="text" name="class" required class="w-full px-3 py-2 border rounded" title="Class" placeholder="Enter your Class" />
+            </div>
+            <div class="mb-4">
+                <label class="block mb-1 font-semibold">Branch</label>
+                <input type="text" name="branch" required class="w-full px-3 py-2 border rounded" title="Branch" placeholder="Enter your Branch" />
+            </div>
+            <div class="mb-4">
+                <label class="block mb-1 font-semibold">Mobile Number</label>
+                <input type="text" name="mobile" required class="w-full px-3 py-2 border rounded" title="Mobile Number" placeholder="Enter your Mobile Number" />
+            </div>
+            <div class="mb-6">
+                <label class="block mb-1 font-semibold">Password</label>
+                <input type="password" name="password" required class="w-full px-3 py-2 border rounded" title="Password" placeholder="Enter your Password" />
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">Signup</button>
+        </form>
+        <div class="mt-4 text-center">
+            <a href="/login" class="text-blue-600 hover:underline">Already have an account? Login</a>
+        </div>
+    </div>
+</body>
+</html> 
